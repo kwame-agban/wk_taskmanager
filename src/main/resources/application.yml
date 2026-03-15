@@ -1,0 +1,11 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: TON_CLIENT_ID
+            client-secret: TON_CLIENT_SECRET
+            scope:
+              - read:user
+              - user:email

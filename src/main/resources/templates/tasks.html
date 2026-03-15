@@ -1,0 +1,31 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Mes tâches</title>
+</head>
+<body>
+<h1>Mes tâches</h1>
+<p>Utilisateur : <span th:text="${username}"></span></p>
+
+<form method="post" action="/tasks">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+    <input type="text" name="title" placeholder="Nouvelle tâche" required>
+    <button type="submit">Ajouter</button>
+</form>
+
+<ul>
+    <li th:each="task : ${tasks}">
+        <span th:text="${task.title}"></span>
+        <form method="post" action="/tasks/delete" style="display:inline;">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <input type="hidden" name="id" th:value="${task.id}">
+            <button type="submit">Supprimer</button>
+        </form>
+    </li>
+</ul>
+
+<a href="/">Retour accueil</a>
+</body>
+</html>
