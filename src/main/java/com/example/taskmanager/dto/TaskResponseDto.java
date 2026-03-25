@@ -1,44 +1,31 @@
-package com.example.taskmanager.model;
+package com.example.taskmanager.dto;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "tasks")
-public class Task {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
+public class TaskResponseDto {
     private Long id;
     private String title;
     private String description;
     private boolean completed;
 
-    public Task() {
+    public TaskResponseDto() {
     }
 
-    public Task(Long id, String title, String description, boolean completed) {
+    public TaskResponseDto(Long id, String title, String description, boolean completed) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.completed = completed;
     }
 
-    public Task(Long id, String title) {
-        this.id = id;
-        this.title = title;
-    }
-
     public Long getId() {
         return id;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public void setTitle(String title) {
@@ -60,4 +47,5 @@ public class Task {
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
+
 }

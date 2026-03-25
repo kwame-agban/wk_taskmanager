@@ -1,0 +1,48 @@
+package com.example.taskmanager.controller;
+
+import com.example.taskmanager.dto.TaskRequestDto;
+import com.example.taskmanager.dto.TaskResponseDto;
+import com.example.taskmanager.service.TaskService;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/tasks")
+public class TaskRestController {
+    private final TaskService taskService;
+
+    public TaskRestController(TaskService taskService) {
+        this.taskService = taskService;
+    }
+
+    @GetMapping
+    public List<TaskResponseDto> getAllTasks() {
+        return taskService.getAllTasks();
+    }
+
+    @GetMapping("/{id}")
+    public TaskResponseDto getTaskById(@PathVariable Long id) {
+        return taskService.getTaskById(id);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public TaskResponseDto createTask(@Valid @RequestBody TaskRequestDto request) {
+        return taskService.createTask(request);
+    }
+
+    @PutMapping("/{id}")
+    public TaskResponseDto updateTask(@PathVariable Long id,
+                                      @Valid @RequestBody TaskRequestDto request) {
+        return taskService.updateTask(id, request);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteTask(@PathVariable Long id) {
+        taskService.deleteTask(id);
+    }
+}

@@ -1,6 +1,6 @@
 package com.example.taskmanager.controller;
 
-import com.example.taskmanager.service.TaskService;
+import com.example.taskmanager.service.TaskServiceMVC;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
 
-@Controller
+//@Controller
 @RequestMapping("/tasks")
 public class TaskController {
 
-    private final TaskService taskService;
+    private final TaskServiceMVC taskService;
 
-    public TaskController(TaskService taskService) {
+    public TaskController(TaskServiceMVC taskService) {
         this.taskService = taskService;
     }
 
