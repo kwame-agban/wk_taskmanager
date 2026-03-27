@@ -1,7 +1,7 @@
-package com.example.taskmanager.security;
+package com.example.taskmanager.service;
 
-import com.example.taskmanager.repository.UserRepository;
 import com.example.taskmanager.entity.User;
+import com.example.taskmanager.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
-
     private final UserRepository userRepository;
 
     public CustomUserDetailsService(UserRepository userRepository) {
@@ -27,4 +26,5 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .roles(user.getRole())
                 .build();
     }
+
 }

@@ -1,8 +1,8 @@
 package com.example.taskmanager;
-import com.example.taskmanager.controller.AuthController;
+import com.example.taskmanager.controller.AuthControllerAPI;
 import com.example.taskmanager.dto.LoginRequest;
 import com.example.taskmanager.dto.LoginResponse;
-import com.example.taskmanager.security.JwtService;
+import com.example.taskmanager.security.JwtServiceAPI;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -18,17 +18,17 @@ import java.util.Collections;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.when;
+
 @ExtendWith(MockitoExtension.class)
 public class AuthControllerTests {
     @Mock
     private AuthenticationManager authenticationManager;
 
     @Mock
-    private JwtService jwtService;
+    private JwtServiceAPI jwtService;
 
     @InjectMocks
-    private AuthController authController;
+    private AuthControllerAPI authController;
 
     @Test
     void login_shouldReturnToken_whenCredentialsAreValid() {
